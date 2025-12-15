@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Artisan Craft | High-End Bespoke Joinery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0d0d0d;
+            --primary-light: #f8f6f2;
+            --accent-gold: #b18e5c;
+            --accent-bronze: #8c6d3f;
+            --accent-warm: #d4b896;
+            --text-dark: #2a2a2a;
+            --text-medium: #555555;
+            --text-light: #777777;
+            --transition-smooth: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: all 0.3s ease;
+            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--primary-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .logo-main {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-bronze) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-right: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(177, 142, 92, 0.2);
+        }
+        
+        .logo-icon:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .logo-icon span {
+            color: white;
+            font-weight: 800;
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+        
+        .logo-text-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-medium);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 48px;
+        }
+        
+        nav li {
+            position: relative;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition-fast);
+            letter-spacing: 0.5px;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-bronze));
+            transition: var(--transition-fast);
+        }
+        
+        nav a:hover:after, nav a.active:after {
+            width: 100%;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--accent-gold);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-dark);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Page Header */
+        .page-header {
+            height: 70vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.7)), url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(177, 142, 92, 0.1) 0%, transparent 100%);
+        }
+        
+        .page-header-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.5s;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .page-header h1 {
+            font-size: 72px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            font-size: 22px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 44px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-bronze) 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-transform: uppercase;
+            font-size: 14px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(177, 142, 92, 0.2);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-bronze) 0%, var(--accent-gold) 100%);
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+        
+        .btn:hover:before {
+            opacity: 1;
+        }
+        
+        .btn span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(177, 142, 92, 0.3);
+        }
+        
+        /* Portfolio Content */
+        .portfolio-content {
+            padding: 100px 0;
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 80px;
+        }
+        
+        .filter-btn {
+            padding: 14px 32px;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            border-radius: 30px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-bronze) 100%);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(177, 142, 92, 0.2);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            height: 400px;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-smooth);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(13, 13, 13, 0.9));
+            color: white;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            padding: 6px 16px;
+            background-color: var(--accent-gold);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .portfolio-overlay h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            opacity: 0.9;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Project Showcase */
+        .project-showcase {
+            padding: 100px 0;
+            background-color: white;
+            border-radius: 20px;
+            margin: 100px 0;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title h2 {
+            font-size: 56px;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-bronze));
+        }
+        
+        .section-title p {
+            max-width: 800px;
+            margin: 40px auto 0;
+            color: var(--text-medium);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .project-detail {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--primary-light);
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+        }
+        
+        .project-detail:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .project-detail-icon {
+            font-size: 48px;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-detail h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 140px 0;
+            background: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.85)), url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta-section h2 {
+            font-size: 56px;
+            margin-bottom: 28px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-size: 20px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 100px 0 40px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo .logo-text-main {
+            color: white;
+        }
+        
+        .footer-logo .logo-text-sub {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-about p {
+            margin-top: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 22px;
+            margin-bottom: 32px;
+            color: white;
+            position: relative;
+            padding-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .footer-links h3:after, .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-bronze));
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 12px;
+            font-size: 12px;
+            color: var(--accent-gold);
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-links a:hover i {
+            opacity: 1;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .footer-contact i {
+            margin-right: 16px;
+            color: var(--accent-gold);
+            width: 20px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition-fast);
+            font-size: 18px;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 15px;
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition-smooth);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .page-header h1 {
+                font-size: 62px;
+            }
+            
+            .section-title h2, .cta-section h2 {
+                font-size: 48px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 52px;
+            }
+            
+            .page-header p {
+                font-size: 20px;
+            }
+            
+            .section-title h2, .cta-section h2 {
+                font-size: 42px;
+            }
+            
+            nav ul {
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 30px 0;
+                transform: translateX(-100%);
+                opacity: 0;
+                transition: var(--transition-smooth);
+                z-index: 999;
+                gap: 30px;
+            }
+            
+            nav ul.active {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 42px;
+            }
+            
+            .page-header p {
+                font-size: 18px;
+            }
+            
+            .section-title h2, .cta-section h2 {
+                font-size: 36px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .page-header {
+                min-height: 500px;
+                height: 60vh;
+            }
+            
+            .btn {
+                padding: 16px 36px;
+                font-size: 13px;
+            }
+            
+            .section-title h2, .cta-section h2 {
+                font-size: 32px;
+            }
+            
+            .portfolio-item {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <div class="logo-icon">
+                        <span>AC</span>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-text-main">ARTISAN CRAFT</div>
+                        <div class="logo-text-sub">BESPOKE JOINERY</div>
+                    </div>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="btn" style="padding: 12px 28px; font-size: 13px;">Get Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Our Portfolio</h1>
+                <p>Explore our collection of bespoke joinery projects that showcase precision, artistry, and exceptional craftsmanship</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Content -->
+    <section class="portfolio-content">
+        <div class="container">
+            <div class="portfolio-filter fade-in">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="kitchen">Kitchens</button>
+                <button class="filter-btn" data-filter="closet">Closets</button>
+                <button class="filter-btn" data-filter="tvwall">TV Walls</button>
+                <button class="filter-btn" data-filter="vanity">Vanities</button>
+                <button class="filter-btn" data-filter="doors">Doors</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Kitchen Projects -->
+                <div class="portfolio-item fade-in" data-category="kitchen">
+                    <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Modern Kitchen">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Kitchen</span>
+                        <h3>Modern Kitchen</h3>
+                        <p>Walnut and marble custom kitchen with integrated appliances and smart storage solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="kitchen">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Contemporary Kitchen">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Kitchen</span>
+                        <h3>Contemporary Kitchen</h3>
+                        <p>White oak and quartz kitchen with hidden storage and professional-grade appliances.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="kitchen">
+                    <img src="https://imgs.search.brave.com/GtIUSFG-f3GOtk_0BTQd5R-U9-dErZlehpbXXntgP2o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9qb2hu/bWljaGFlbC5zdHVk/aW8vY2RuL3Nob3Av/ZmlsZXMvQWx1bXhf/R2FsbGVyeV9CXzE0/MDB4LmpwZz92PTE2/OTk1NDkyNjM" alt="Island Kitchen">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Kitchen</span>
+                        <h3>Island Kitchen</h3>
+                        <p>Custom kitchen with large central island featuring waterfall countertops and seating.</p>
+                    </div>
+                </div>
+                
+                <!-- Closet Projects -->
+                <div class="portfolio-item fade-in" data-category="closet">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Walk-in Closet">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Closet</span>
+                        <h3>Walk-in Closet</h3>
+                        <p>Custom organized wardrobe system with integrated lighting and glass display sections.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="closet">
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Luxury Closet">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Closet</span>
+                        <h3>Luxury Closet</h3>
+                        <p>Cherry wood closet with custom drawers, shoe racks, and full-length mirror doors.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="closet">
+                    <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="His & Hers Closet">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Closet</span>
+                        <h3>His & Hers Closet</h3>
+                        <p>Dual organized closet system with seating area and custom jewelry storage.</p>
+                    </div>
+                </div>
+                
+                <!-- TV Wall Projects -->
+                <div class="portfolio-item fade-in" data-category="tvwall">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Entertainment Wall">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">TV Wall</span>
+                        <h3>Entertainment Wall</h3>
+                        <p>Integrated media and display unit with ambient lighting and concealed wiring.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="tvwall">
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Media Wall">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">TV Wall</span>
+                        <h3>Media Wall</h3>
+                        <p>Custom built-in shelving and media center with fireplace integration.</p>
+                    </div>
+                </div>
+                
+                <!-- Vanity Projects -->
+                <div class="portfolio-item fade-in" data-category="vanity">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Luxury Vanity">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Vanity</span>
+                        <h3>Luxury Vanity</h3>
+                        <p>Double vanity with marble top, custom storage, and integrated lighting.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="vanity">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Bathroom Vanity">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Vanity</span>
+                        <h3>Bathroom Vanity</h3>
+                        <p>Floating vanity with integrated lighting, mirror, and custom cabinetry.</p>
+                    </div>
+                </div>
+                
+                <!-- Door Projects -->
+                <div class="portfolio-item fade-in" data-category="doors">
+                    <img src="https://imgs.search.brave.com/GYBJRvA4VEMrPwUPtrHozd2eUkd7aInakmZYfb1X--0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aG9kZ2VzY29tcGFu/eS5jb20vaW1hZ2Uv/c2NhbGUvMTkyMC8x/OTIwL21vZHVsZXMv/bmV3cy8xNjA4NzMz/MzM5LXNob2FsLWNy/ZWVrLXBhbmVsLXN0/ZWVsLWZvbGRpbmct/ZG9vcnMtcGFydGlh/bGx5LW9wZW4uanBn" alt="Custom Doors">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Doors</span>
+                        <h3>Custom Doors</h3>
+                        <p>Handcrafted solid wood interior doors with custom hardware and finishes.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="doors">
+                    <img src="https://www.alhabibpaneldoors.com/images/interior-item/sliding-french-door-design-ipc358.jpeg" alt="Sliding Doors">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Doors</span>
+                        <h3>Sliding Doors</h3>
+                        <p>Custom glass and wood sliding door system with barn-style hardware.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Showcase -->
+    <section class="project-showcase">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Featured Project</h2>
+                <p>A detailed look at one of our most comprehensive bespoke joinery installations</p>
+            </div>
+            
+            <div class="featured-project fade-in">
+                <div style="border-radius: 20px; overflow: hidden; margin-bottom: 60px; box-shadow: var(--shadow-strong);">
+                    <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Featured Project" style="width: 100%; height: auto; display: block;">
+                </div>
+                
+                <div class="project-details">
+                    <div class="project-detail fade-in">
+                        <div class="project-detail-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <h3>Custom Design</h3>
+                        <p>Completely bespoke design tailored to the client's specific needs, space constraints, and aesthetic preferences.</p>
+                    </div>
+                    
+                    <div class="project-detail fade-in">
+                        <div class="project-detail-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Premium Materials</h3>
+                        <p>Selection of sustainable hardwoods, premium hardware, and custom finishes that ensure longevity and beauty.</p>
+                    </div>
+                    
+                    <div class="project-detail fade-in">
+                        <div class="project-detail-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Timeline</h3>
+                        <p>Completed within 10 weeks from initial consultation to final installation, with minimal disruption to the household.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Inspired by Our Work?</h2>
+                <p>Let's discuss how we can bring the same level of craftsmanship and design excellence to your home. Schedule a consultation to begin transforming your space.</p>
+                <a href="contact.html" class="btn"><span>Start Your Project</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <a href="index.html" class="logo">
+                            <div class="logo-main">
+                                <div class="logo-icon">
+                                    <span>AC</span>
+                                </div>
+                                <div class="logo-text">
+                                    <div class="logo-text-main">ARTISAN CRAFT</div>
+                                    <div class="logo-text-sub">BESPOKE JOINERY</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <p>Creating exceptional bespoke joinery in Toronto and across Canada. We blend traditional craftsmanship with contemporary design to transform your living spaces into works of art.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Kitchens</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Closets</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Toronto, Ontario, Canada</p>
+                    <p><i class="fas fa-phone"></i> +1 (416) 555-0199</p>
+                    <p><i class="fas fa-envelope"></i> info@artisancraft.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm EST</p>
+                    <p><i class="fas fa-calendar"></i> Saturday: By Appointment</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Artisan Craft. All rights reserved. | High-End Bespoke Joinery Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Portfolio Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || itemCategory === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 100);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trigger initial fade-in for elements already in view
+            fadeInOnScroll();
+            
+            // Add active class to current page in navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (currentPage === linkPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Logo shine animation on load
+            const logoIcon = document.querySelector('.logo-icon');
+            setTimeout(() => {
+                logoIcon.style.animation = 'shine 3s infinite linear';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
